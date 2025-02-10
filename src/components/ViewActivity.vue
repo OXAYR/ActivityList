@@ -1,7 +1,7 @@
 <!-- @format -->
 
 <template>
-  <div class="p-6 max-w-md mx-auto bg-white shadow-lg rounded-lg">
+  <div class="p-6 max-w-md mx-auto bg-white rounded-lg">
     <!-- Title of the activity list -->
     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Activity List</h2>
 
@@ -27,8 +27,6 @@
               <option value="completed">Completed</option>
             </select>
           </span>
-
-          <!-- Dropdown for editing status -->
         </div>
 
         <!-- Action buttons (Edit & Delete) -->
@@ -41,12 +39,13 @@
           </button>
 
           <button
-            @click="deleteActivity(activity.id)"
+            @click="confirmDelete(activity.id)"
             class="px-2 py-1 bg-red-500 text-white rounded-md"
           >
             Delete
           </button>
         </div>
+
         <button
           v-else
           @click="saveEdit(activity.id)"
@@ -81,11 +80,14 @@ onMounted(() => {
 });
 
 /**
- * Deletes an activity based on its ID.
+ * Deletes an activity based on its ID after confirmation.
  * @param {number} id - The ID of the activity to be deleted.
  */
-const deleteActivity = (id) => {
-  activityStore.deleteActivity(id);
+const confirmDelete = (id) => {
+  const confirmed = confirm("Are you sure you want to delete this activity?");
+  if (confirmed) {
+    activityStore.deleteActivity(id);
+  }
 };
 
 /**

@@ -1,7 +1,7 @@
 <!-- @format -->
 
 <template>
-  <div class="p-6 max-w-md mx-auto bg-white shadow-lg rounded-lg">
+  <div class="p-6 max-w-md mx-auto bg-white rounded-lg">
     <!-- Title of the form -->
     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Add Activity</h2>
 
